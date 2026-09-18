@@ -2474,7 +2474,7 @@ function renderACCDSStep(stepNum) {
         <h3 style="font-size:1.25rem; font-weight:800; color:#fbbf24; margin-bottom:0.4rem;">STUDENT DETAILS &amp; COMMITMENT</h3>
         <p style="font-size:0.85rem; color:#cbd5e1; margin-bottom:1.4rem;">Please complete all required student details before proceeding with the assessment.</p>
         
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div class="accds-form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
           <div>
             <label style="font-size:0.8rem; font-weight:700; color:#cbd5e1; display:block; margin-bottom:0.3rem;">Full Name *</label>
             <input type="text" id="fullName" value="${accdsFormData.fullName || ''}" class="search-input" style="width:100%; border-radius:10px;">
@@ -2558,7 +2558,7 @@ function renderACCDSStep(stepNum) {
           `).join('')}
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">
+        <div class="accds-grid-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">
           <div>
             <label style="font-size:0.82rem; font-weight:700; color:#fbbf24; display:block; margin-bottom:0.3rem;">One thing about myself that makes me proud:</label>
             <textarea id="about_proud" class="search-input" style="width:100%; height:70px; border-radius:12px;">${accdsFormData.about_proud || ''}</textarea>
@@ -2584,7 +2584,7 @@ function renderACCDSStep(stepNum) {
         <h3 style="font-size:1.25rem; font-weight:800; color:#fbbf24; margin-bottom:0.4rem;">2. WHAT ENERGISES ME</h3>
         <p style="font-size:0.85rem; color:#cbd5e1; margin-bottom:1.4rem;">Select activities I naturally enjoy, then specify your TOP 5.</p>
 
-        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.5rem;">
+        <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.5rem;">
           ${list.map(item => `
             <label style="background:rgba(255,255,255,0.05); padding:0.6rem 0.8rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); font-size:0.82rem; display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
               <input type="checkbox" name="energise_activities" value="${item}" ${ (accdsFormData.energise_activities || []).includes(item) ? 'checked' : '' }>
@@ -2595,7 +2595,7 @@ function renderACCDSStep(stepNum) {
 
         <div style="margin-bottom:1.2rem;">
           <label style="font-size:0.85rem; font-weight:700; color:#fbbf24; display:block; margin-bottom:0.5rem;">My TOP 5 activities:</label>
-          <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:0.5rem;">
+          <div class="accds-grid-5col" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:0.5rem;">
             ${[0, 1, 2, 3, 4].map(idx => `
               <input type="text" class="top5_act_input search-input" style="font-size:0.78rem; border-radius:8px;" value="${(accdsFormData.top5_activities || [])[idx] || ''}" placeholder="Top ${idx + 1}">
             `).join('')}
@@ -2620,7 +2620,7 @@ function renderACCDSStep(stepNum) {
         <h3 style="font-size:1.25rem; font-weight:800; color:#fbbf24; margin-bottom:0.4rem;">3. WHAT MATTERS TO ME (CORE VALUES)</h3>
         <p style="font-size:0.85rem; color:#cbd5e1; margin-bottom:1.4rem;">Choose up to 8 values, then rank your TOP 3 and explain why they matter.</p>
 
-        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.5rem;">
+        <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.5rem;">
           ${list.map(item => `
             <label style="background:rgba(255,255,255,0.05); padding:0.6rem 0.8rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); font-size:0.82rem; display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
               <input type="checkbox" name="core_values" value="${item}" ${ (accdsFormData.core_values || []).includes(item) ? 'checked' : '' }>
@@ -2632,7 +2632,7 @@ function renderACCDSStep(stepNum) {
         <div style="display:flex; flex-direction:column; gap:0.8rem;">
           <h4 style="font-size:0.9rem; font-weight:800; color:#fbbf24;">Your TOP 3 values and why they matter:</h4>
           ${[1, 2, 3].map(n => `
-            <div style="display:grid; grid-template-columns:1fr 2fr; gap:0.8rem;">
+            <div class="accds-grid-2col" style="display:grid; grid-template-columns:1fr 2fr; gap:0.8rem;">
               <input type="text" id="val${n}_name" value="${accdsFormData[`val${n}_name`] || ''}" placeholder="${n}. Value name" class="search-input" style="font-size:0.82rem; border-radius:8px;">
               <input type="text" id="val${n}_why" value="${accdsFormData[`val${n}_why`] || ''}" placeholder="Why it matters" class="search-input" style="font-size:0.82rem; border-radius:8px;">
             </div>
@@ -2652,7 +2652,7 @@ function renderACCDSStep(stepNum) {
         <!-- A. Natural Strengths -->
         <div style="margin-bottom:1.5rem;">
           <h4 style="font-size:0.9rem; font-weight:800; color:#fbbf24; margin-bottom:0.6rem;">A. NATURAL STRENGTHS</h4>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; margin-bottom:0.8rem;">
+          <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; margin-bottom:0.8rem;">
             ${natural.map(item => `
               <label style="background:rgba(255,255,255,0.05); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
                 <input type="checkbox" name="natural_strengths" value="${item}" ${ (accdsFormData.natural_strengths || []).includes(item) ? 'checked' : '' }>
@@ -2660,7 +2660,7 @@ function renderACCDSStep(stepNum) {
               </label>
             `).join('')}
           </div>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
+          <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
             ${[0, 1, 2].map(idx => `
               <input type="text" class="top3_nat_str search-input" style="font-size:0.78rem; border-radius:8px;" value="${(accdsFormData.top3_natural_strengths || [])[idx] || ''}" placeholder="Top Natural Strength ${idx + 1}">
             `).join('')}
@@ -2670,7 +2670,7 @@ function renderACCDSStep(stepNum) {
         <!-- B. Learned Skills -->
         <div style="margin-bottom:1.5rem;">
           <h4 style="font-size:0.9rem; font-weight:800; color:#fbbf24; margin-bottom:0.6rem;">B. LEARNED SKILLS</h4>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; margin-bottom:0.8rem;">
+          <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; margin-bottom:0.8rem;">
             ${learned.map(item => `
               <label style="background:rgba(255,255,255,0.05); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
                 <input type="checkbox" name="learned_skills" value="${item}" ${ (accdsFormData.learned_skills || []).includes(item) ? 'checked' : '' }>
@@ -2678,7 +2678,7 @@ function renderACCDSStep(stepNum) {
               </label>
             `).join('')}
           </div>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
+          <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
             ${[0, 1, 2].map(idx => `
               <input type="text" class="top3_lrn_sk search-input" style="font-size:0.78rem; border-radius:8px;" value="${(accdsFormData.top3_learned_skills || [])[idx] || ''}" placeholder="Top Learned Skill ${idx + 1}">
             `).join('')}
@@ -2720,7 +2720,7 @@ function renderACCDSStep(stepNum) {
         <!-- A. How I Learn -->
         <div style="margin-bottom:1.5rem;">
           <h4 style="font-size:0.9rem; font-weight:800; color:#fbbf24; margin-bottom:0.6rem;">A. HOW I LEARN (Tick all that fit)</h4>
-          <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.6rem;">
+          <div class="accds-grid-2col" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.6rem;">
             ${learnStyles.map(item => `
               <label style="background:rgba(255,255,255,0.05); padding:0.6rem 0.8rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); font-size:0.82rem; display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
                 <input type="checkbox" name="learning_styles" value="${item}" ${ (accdsFormData.learning_styles || []).includes(item) ? 'checked' : '' }>
@@ -2735,7 +2735,7 @@ function renderACCDSStep(stepNum) {
           <h4 style="font-size:0.9rem; font-weight:800; color:#fbbf24; margin-bottom:0.6rem;">B. HOW I LIKE TO WORK (Choose ONE from each pair)</h4>
           <div style="display:flex; flex-direction:column; gap:0.6rem;">
             ${pairs.map(p => `
-              <div style="background:rgba(255,255,255,0.05); padding:0.6rem 0.9rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+              <div class="accds-grid-2col" style="background:rgba(255,255,255,0.05); padding:0.6rem 0.9rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
                 <label style="font-size:0.82rem; cursor:pointer; display:flex; align-items:center; gap:0.4rem;">
                   <input type="radio" name="${p.id}" value="${p.optA}" ${accdsFormData[p.id] === p.optA ? 'checked' : ''}>
                   <span>${p.optA}</span>
@@ -2763,7 +2763,7 @@ function renderACCDSStep(stepNum) {
         <h3 style="font-size:1.25rem; font-weight:800; color:#fbbf24; margin-bottom:0.4rem;">6. MY ACADEMIC SNAPSHOT</h3>
         <p style="font-size:0.85rem; color:#cbd5e1; margin-bottom:1.4rem;">Subjects I enjoy, subjects I find challenging, and how I currently study.</p>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.5rem;">
+        <div class="accds-grid-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.5rem;">
           <div>
             <h4 style="font-size:0.88rem; font-weight:800; color:#fbbf24; margin-bottom:0.5rem;">My 3 favourite subjects:</h4>
             ${[1, 2, 3].map(n => `
@@ -2781,7 +2781,7 @@ function renderACCDSStep(stepNum) {
         <!-- Latest Marks -->
         <div style="margin-bottom:1.5rem;">
           <h4 style="font-size:0.88rem; font-weight:800; color:#fbbf24; margin-bottom:0.5rem;">Latest / recent marks (optional but helpful):</h4>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+          <div class="accds-grid-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
             ${[0, 1, 2, 3].map(idx => {
               const m = (accdsFormData.marks || [])[idx] || {};
               return `
@@ -2797,7 +2797,7 @@ function renderACCDSStep(stepNum) {
         <!-- Study Obstacles -->
         <div style="margin-bottom:1.2rem;">
           <h4 style="font-size:0.88rem; font-weight:800; color:#fbbf24; margin-bottom:0.5rem;">What usually gets in the way of studying well? (tick any)</h4>
-          <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.5rem;">
+          <div class="accds-grid-2col" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.5rem;">
             ${obstacles.map(item => `
               <label style="background:rgba(255,255,255,0.05); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
                 <input type="checkbox" name="study_obstacles" value="${item}" ${ (accdsFormData.study_obstacles || []).includes(item) ? 'checked' : '' }>
@@ -2827,7 +2827,7 @@ function renderACCDSStep(stepNum) {
         <h3 style="font-size:1.25rem; font-weight:800; color:#fbbf24; margin-bottom:0.4rem;">7. MY INTEREST AREAS</h3>
         <p style="font-size:0.85rem; color:#cbd5e1; margin-bottom:1.4rem;">Subjects and worlds I want to explore.</p>
 
-        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.5rem;">
+        <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.5rem;">
           ${list.map(item => `
             <label style="background:rgba(255,255,255,0.05); padding:0.6rem 0.8rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); font-size:0.82rem; display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
               <input type="checkbox" name="interest_areas" value="${item}" ${ (accdsFormData.interest_areas || []).includes(item) ? 'checked' : '' }>
@@ -2838,7 +2838,7 @@ function renderACCDSStep(stepNum) {
 
         <div style="margin-bottom:1.2rem;">
           <h4 style="font-size:0.88rem; font-weight:800; color:#fbbf24; margin-bottom:0.5rem;">My TOP 3 interest areas:</h4>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
+          <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
             ${[0, 1, 2].map(idx => `
               <input type="text" class="top3_int_area search-input" style="font-size:0.78rem; border-radius:8px;" value="${(accdsFormData.top3_interest_areas || [])[idx] || ''}" placeholder="Top Interest Area ${idx + 1}">
             `).join('')}
@@ -2899,7 +2899,7 @@ function renderACCDSStep(stepNum) {
         <!-- Career Possibilities Checkboxes -->
         <div style="margin-bottom:1.5rem;">
           <h4 style="font-size:0.88rem; font-weight:800; color:#fbbf24; margin-bottom:0.6rem;">CAREER POSSIBILITIES (Select curious areas):</h4>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
+          <div class="accds-grid-3col" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem;">
             ${list.map(item => `
               <label style="background:rgba(255,255,255,0.05); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1); font-size:0.78rem; display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
                 <input type="checkbox" name="career_possibilities" value="${item}" ${ (accdsFormData.career_possibilities || []).includes(item) ? 'checked' : '' }>
@@ -2916,7 +2916,7 @@ function renderACCDSStep(stepNum) {
             ${[0, 1, 2].map(rIdx => {
               const row = (accdsFormData.explore_rows || [])[rIdx] || {};
               return `
-                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem;">
+                <div class="accds-grid-3col" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem;">
                   <input type="text" class="exp_area_input search-input" style="font-size:0.78rem; border-radius:8px;" value="${row.area || ''}" placeholder="${rIdx + 1}. Career area">
                   <input type="text" class="exp_why_input search-input" style="font-size:0.78rem; border-radius:8px;" value="${row.why || ''}" placeholder="Why it interests me">
                   <input type="text" class="exp_find_input search-input" style="font-size:0.78rem; border-radius:8px;" value="${row.findOut || ''}" placeholder="What I want to find out">
@@ -2934,7 +2934,7 @@ function renderACCDSStep(stepNum) {
               <label style="font-size:0.78rem; font-weight:700; color:#cbd5e1; display:block;">One thing I will do in the next 30 days to explore my future:</label>
               <input type="text" id="action_30_days" value="${accdsFormData.action_30_days || ''}" class="search-input" style="width:100%; border-radius:8px; font-size:0.8rem;">
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+            <div class="accds-grid-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
               <div>
                 <label style="font-size:0.78rem; font-weight:700; color:#cbd5e1; display:block;">Who can support me?</label>
                 <input type="text" id="supporter" value="${accdsFormData.supporter || ''}" class="search-input" style="width:100%; border-radius:8px; font-size:0.8rem;">
@@ -2944,7 +2944,7 @@ function renderACCDSStep(stepNum) {
                 <input type="text" id="by_when" value="${accdsFormData.by_when || ''}" class="search-input" style="width:100%; border-radius:8px; font-size:0.8rem;">
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:0.4rem;">
+            <div class="accds-grid-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:0.4rem;">
               <div>
                 <label style="font-size:0.78rem; font-weight:700; color:#cbd5e1; display:block;">Student Signature / Typed Name *</label>
                 <input type="text" id="signature" value="${accdsFormData.signature || ''}" class="search-input" style="width:100%; border-radius:8px; font-size:0.8rem;">
@@ -2962,7 +2962,7 @@ function renderACCDSStep(stepNum) {
 
   // Action Buttons Footer
   html += `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.1);">
+    <div class="accds-step-nav" style="display:flex; justify-content:space-between; align-items:center; margin-top:2rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.1);">
       ${stepNum > 1 ? `
         <button class="cta-demo-btn" style="background:rgba(255,255,255,0.1); color:#fff; border-radius:9999px; padding:0.6rem 1.4rem;" onclick="goToACCDSStep(${stepNum - 1})">
           ⬅️ Previous Step
@@ -3152,7 +3152,7 @@ function renderACCDSReportDashboard(evalResults) {
 
       <!-- Profile Summary Scores Grid -->
       <h3 style="font-size:1.1rem; font-weight:800; color:#fbbf24; margin-bottom:1rem;">1. Key Indicator Scores &amp; Strengths Identified</h3>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; margin-bottom:2rem;">
+      <div class="accds-score-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; margin-bottom:2rem;">
         <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:16px; border:1px solid rgba(255,255,255,0.1);">
           <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:800; margin-bottom:0.4rem;">
             <span>💼 Business Orientation</span>
@@ -3218,7 +3218,7 @@ function renderACCDSReportDashboard(evalResults) {
       <h3 style="font-size:1.1rem; font-weight:800; color:#fbbf24; margin-bottom:1rem;">2. Top 3 Career Pathway Recommendations</h3>
       <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:2rem;">
         ${evalResults.pathways.slice(0, 3).map(p => `
-          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(251,191,36,0.3); padding:1.2rem; border-radius:18px; display:grid; grid-template-columns:80px 1fr 2fr; gap:1rem; align-items:center;">
+          <div class="accds-pathway-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(251,191,36,0.3); padding:1.2rem; border-radius:18px; display:grid; grid-template-columns:80px 1fr 2fr; gap:1rem; align-items:center;">
             <div style="font-size:1.8rem; font-weight:800; color:#fbbf24; text-align:center;">#${p.rank}</div>
             <div>
               <h4 style="font-size:1rem; font-weight:800; color:#fff;">${p.title}</h4>
